@@ -1,1 +1,30 @@
 #WORK IN PROGRESS
+#Very basic at the moment and only works for specific functions, but will be updated when I manage to find free time!
+
+#Derivatives for functions in the form ax^e
+def basic_derivative(base):
+    a = int(base[0])
+    e = int(base[3])
+    a *= e
+    e -= 1
+    if e == 0:
+        return str(a)
+    elif a == 0:
+        return str(0)
+    elif e == 1:
+        return str(a) + "x"
+    else:
+        derivative = str(a) + "x^" + str(e)
+        return derivative
+
+#Derivatives for basic exponential functions
+def exponential_derivative(expFunc):
+    expFunc = expFunc.split(" + ")
+    derivative = ""
+    for i in range(len(expFunc)):
+        if i == 0:
+            derivative += basic_derivative(expFunc[i])
+        else:
+            derivative = derivative + " + " + basic_derivative(expFunc[i])
+        i += 1
+    return derivative
